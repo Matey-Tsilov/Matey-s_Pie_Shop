@@ -8,17 +8,21 @@ using System.Threading.Tasks;
 namespace Matey_s_Pie_Shop
 {
     public class Product
-    {
-        private int id;
+    { 
         private string name;
         private string? description;
-
         private int maxItemInStock = 0;
+
+        public Product(int id, string n, string desc) 
+        {
+            Id = id;
+            Name = n;
+            Description = desc;
+        }    
 
         /// <summary>
         ///Properties!
         /// </summary>
-        public int Id { get; set; }
         public string Name { 
             get { return name; } 
             set { name = value.Length > 50 ? value[..50] : value; } 
@@ -38,6 +42,7 @@ namespace Matey_s_Pie_Shop
                 }
             }
         }
+        public int Id { get; set; }
         public UnitType UnitType { get; set; }
         public int AmountInStock { get; private set; }
         public bool IsBelowStockTreshold { get; private set; }
@@ -96,16 +101,16 @@ namespace Matey_s_Pie_Shop
 
         private string CreateSimpleProductRepresenttion()
         {
-            return $"Product {id} ({name})";
+            return $"Product {Id} ({name})";
         } 
         public string DisplayDetailsShort()
         {
-            return $"{id}. {name} \n{AmountInStock} items in stock";
+            return $"{Id}. {name} \n{AmountInStock} items in stock";
         }
         public string DisplayDetailsFull()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{id}. {name} \n{description} \n{AmountInStock} item(s) in stock");
+            sb.Append($"{Id}. {name} \n{description} \n{AmountInStock} item(s) in stock");
 
             if (IsBelowStockTreshold)
             {
