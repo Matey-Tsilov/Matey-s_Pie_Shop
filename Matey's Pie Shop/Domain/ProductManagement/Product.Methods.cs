@@ -1,62 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Matey_s_Pie_Shop
+namespace Matey_s_Pie_Shop.Domain.ProductManagement
 {
-    public class Product
-    { 
-        private string name;
-        private string? description;
-        private int maxItemInStock = 0;
-
-        public Product(int id, string n, string desc, UnitType ut, int maxAmount) 
-        {
-            Id = id;
-            Name = n;
-            Description = desc;
-            UnitType = ut;
-            maxItemInStock = maxAmount;
-            UpdateLowStock();
-        }    
-
-        /// <summary>
-        ///Properties!
-        /// </summary>
-        public string Name { 
-            get { return name; } 
-            set { name = value.Length > 50 ? value[..50] : value; } 
-        }
-        //because its otional we need to include the null case!
-        public string? Description
-        {
-            get { return name; }
-            set 
-            {
-                if (value == null)
-                {
-                    description = string.Empty;
-                }else
-                {
-                    description = value.Length > 50 ? value[..250] : value;
-                }
-            }
-        }
-        public int Id { get; set; }
-        public UnitType UnitType { get; set; }
-        public int AmountInStock { get; private set; }
-        public bool IsBelowStockTreshold { get; private set; }
-        /// <summary>
-        /// Properties
-        /// </summary>
-
-
-
-
-        public void UseProduct(int items    )
+    public partial class Product
+    {
+        public void UseProduct(int items)
         {
             if (items <= AmountInStock)
             {
@@ -64,7 +16,8 @@ namespace Matey_s_Pie_Shop
 
                 UpdateLowStock();
                 Log($"Amount in stock updated. Now {AmountInStock} items in stock");
-            }else
+            }
+            else
             {
                 Log($"Not enough items on stock for {CreateSimpleProductRepresenttion()}. {AmountInStock} available but {items} requested!");
             }
@@ -74,7 +27,7 @@ namespace Matey_s_Pie_Shop
             Console.WriteLine(message);
         }
 
-        public void IncreaseStock() 
+        public void IncreaseStock()
         {
             AmountInStock++;
         }
@@ -85,11 +38,18 @@ namespace Matey_s_Pie_Shop
             if (newValue <= maxItemInStock)
             {
                 AmountInStock += amount;
-            }else
+            }
+            else
             {
                 //overstock isn't stored!
                 maxItemInStock = newValue;
-                Log($"{CreateSimpleProductRepresenttion()} stock overflow. {newValue - AmountInStock} item(s) ordered that couldn't be stored! ");
+                Log($"{CreateSimpleProductRepresenttion()} stock overflow. " +
+                    $"{newValue - AmountInStock} item(s) ordered that " +
+                    $"couldn't be stored! ");
+            }
+            if (AmountInStock > 10)
+            {
+                IsBelowStockTreshold = false;
             }
         }
         private void DecreaseStock(int items, string reason)
@@ -119,26 +79,39 @@ namespace Matey_s_Pie_Shop
         private string CreateSimpleProductRepresenttion()
         {
             return $"Product {Id} ({name})";
-        } 
+        }
         public string DisplayDetailsShort()
         {
             return $"{Id}. {name} \n{AmountInStock} items in stock";
         }
         public string DisplayDetailsFull()
         {
+            ////StringBuilder sb = new StringBuilder();
+            ////sb.Append($"{Id}. {name} \n{description} \n{AmountInStock} item(s) in stock");
+
+            ////if (IsBelowStockTreshold)
+            ////{
+            ////    sb.Append("\n!!STOCK LOW!!");
+            ////}
+
+            //return sb.ToString(); 
+
+            return DisplayDetailsFull("");
+        }
+
+        public string DisplayDetailsFull(string extraDetails)
+        {
             StringBuilder sb = new StringBuilder();
-            sb.Append($"{Id}. {name} \n{description} \n{AmountInStock} item(s) in stock");
+            sb.Append($"{Id}. {name} \n{description}\n{Price.ToString()}$\n{AmountInStock} item(s) in stock");
+            sb.Append(extraDetails);
 
             if (IsBelowStockTreshold)
             {
                 sb.Append("\n!!STOCK LOW!!");
             }
 
-            return sb.ToString(); 
+            return sb.ToString();
         }
-
-
-
 
     }
 }

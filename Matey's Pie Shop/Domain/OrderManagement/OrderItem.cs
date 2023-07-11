@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Matey_s_Pie_Shop
+namespace Matey_s_Pie_Shop.Domain.OrderManagement
 {
-    public enum UnitType
+    internal class OrderItem
     {
-        PerKilo,
-        PerItem,
-        PerBox
     }
 }
