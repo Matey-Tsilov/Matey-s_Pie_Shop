@@ -9,10 +9,10 @@ namespace Matey_s_Pie_Shop.Domain.OrderManagement
     public class OrderItem
     {
         public int Id { get; set; }
-        public string ProductId { get; set; }  
+        public int ProductId { get; set; }  
         
         public string ProductName { get; set; } = string.Empty;
-        public string AmountOrder { get; set; }
+        public int AmountOrder { get; set; }
 
         public override string ToString()
         {

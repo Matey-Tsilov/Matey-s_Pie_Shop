@@ -1,4 +1,12 @@
-﻿WelcomeScreen();
+﻿using Matey_s_Pie_Shop;
+
+WelcomeScreen();
+
+Utilities.InitializeStock();
+Utilities.ShowMainMenu();
+
+Console.WriteLine("Application shutting down...");
+Console.ReadLine();
 
 void WelcomeScreen()
 {

@@ -10,7 +10,7 @@ namespace Matey_s_Pie_Shop.Domain.OrderManagement
     {
         public int Id { get; set; }
         public DateTime OrderFulfillmentDate { get; set; }
-        List<OrderItem> OrderItems { get;  }
+        public List<OrderItem> OrderItems { get;  }
 
         public bool Fulfilled { get; set; } = false;
 
@@ -21,6 +21,24 @@ namespace Matey_s_Pie_Shop.Domain.OrderManagement
             OrderFulfillmentDate = DateTime.Now.AddSeconds(numberOfSecondsTillFulfillment);
             OrderItems = new List<OrderItem>();
 
+        }
+
+        public string ShowOrderDetails()
+        {
+            StringBuilder orderDetails = new StringBuilder();
+
+            orderDetails.AppendLine($"Order ID: {Id}");
+            orderDetails.AppendLine($"Order fulfilment date: {OrderFulfillmentDate.ToShortTimeString()}");
+
+            if (OrderItems != null)
+            {
+                foreach (OrderItem item in OrderItems)
+                {
+                    orderDetails.AppendLine(item.ToString());
+                }
+            }
+
+            return orderDetails.ToString();
         }
     }
 }

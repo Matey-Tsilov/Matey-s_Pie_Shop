@@ -47,7 +47,7 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
                     $"{newValue - AmountInStock} item(s) ordered that " +
                     $"couldn't be stored! ");
             }
-            if (AmountInStock > 10)
+            if (AmountInStock > StockTreshold)
             {
                 IsBelowStockTreshold = false;
             }
@@ -68,9 +68,9 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
             Log(reason);
 
         }
-        private void UpdateLowStock()
+        public void UpdateLowStock()
         {
-            if (AmountInStock <= 10)
+            if (AmountInStock <= StockTreshold)
             {
                 IsBelowStockTreshold = true;
             }
@@ -112,6 +112,14 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
 
             return sb.ToString();
         }
+
+        public static void ChangeTreshold(int newTreshold)
+        {
+            if (newTreshold > 0)
+            {
+                StockTreshold = newTreshold;
+            }
+        } 
 
     }
 }
