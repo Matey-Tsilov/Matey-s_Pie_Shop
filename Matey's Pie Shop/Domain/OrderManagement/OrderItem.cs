@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace Matey_s_Pie_Shop.Domain.OrderManagement
 {
-    internal class OrderItem
+    public class OrderItem
     {
+        public int Id { get; set; }
+        public string ProductId { get; set; }  
+        
+        public string ProductName { get; set; } = string.Empty;
+        public string AmountOrder { get; set; }
+
+        public override string ToString()
+        {
+            return $"Product ID - {ProductId}; Name: {ProductName}, Amount ordered: {AmountOrder}";
+        }
     }
 }
