@@ -13,11 +13,14 @@ namespace Matey_s_Pie_Shop
         private string? description;
         private int maxItemInStock = 0;
 
-        public Product(int id, string n, string desc) 
+        public Product(int id, string n, string desc, UnitType ut, int maxAmount) 
         {
             Id = id;
             Name = n;
             Description = desc;
+            UnitType = ut;
+            maxItemInStock = maxAmount;
+            UpdateLowStock();
         }    
 
         /// <summary>
@@ -74,6 +77,20 @@ namespace Matey_s_Pie_Shop
         public void IncreaseStock() 
         {
             AmountInStock++;
+        }
+        public void IncreaseStock(int amount)
+        {
+            int newValue = AmountInStock + amount;
+
+            if (newValue <= maxItemInStock)
+            {
+                AmountInStock += amount;
+            }else
+            {
+                //overstock isn't stored!
+                maxItemInStock = newValue;
+                Log($"{CreateSimpleProductRepresenttion()} stock overflow. {newValue - AmountInStock} item(s) ordered that couldn't be stored! ");
+            }
         }
         private void DecreaseStock(int items, string reason)
         {
