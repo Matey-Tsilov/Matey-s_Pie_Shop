@@ -14,6 +14,8 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
         private string? description;
         private int maxItemInStock = 0;
 
+        public static int StockTreshold = 5;
+
         public Product(int id, string n, string desc, Price p, UnitType ut, int maxAmount)
         {
             Id = id;
