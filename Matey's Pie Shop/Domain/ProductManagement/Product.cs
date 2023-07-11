@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace Matey_s_Pie_Shop.Domain.ProductManagement
 {
-    public class Product
+    public partial class Product
     {
         private string name;
         private string? description;
         private int maxItemInStock = 0;
 
-        public Product(int id, Price p, string n, string desc, UnitType ut, int maxAmount)
+        public Product(int id, string n, string desc, Price p, UnitType ut, int maxAmount)
         {
             Id = id;
             Price = p;
@@ -57,117 +57,6 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
         /// <summary>
         /// Properties
         /// </summary>
-
-
-
-
-        public void UseProduct(int items)
-        {
-            if (items <= AmountInStock)
-            {
-                AmountInStock -= items;
-
-                UpdateLowStock();
-                Log($"Amount in stock updated. Now {AmountInStock} items in stock");
-            }
-            else
-            {
-                Log($"Not enough items on stock for {CreateSimpleProductRepresenttion()}. {AmountInStock} available but {items} requested!");
-            }
-        }
-        private void Log(string message)
-        {
-            Console.WriteLine(message);
-        }
-
-        public void IncreaseStock()
-        {
-            AmountInStock++;
-        }
-        public void IncreaseStock(int amount)
-        {
-            int newValue = AmountInStock + amount;
-
-            if (newValue <= maxItemInStock)
-            {
-                AmountInStock += amount;
-            }
-            else
-            {
-                //overstock isn't stored!
-                maxItemInStock = newValue;
-                Log($"{CreateSimpleProductRepresenttion()} stock overflow. " +
-                    $"{newValue - AmountInStock} item(s) ordered that " +
-                    $"couldn't be stored! ");
-            }
-            if (AmountInStock > 10)
-            {
-                IsBelowStockTreshold = false;
-            }
-        }
-        private void DecreaseStock(int items, string reason)
-        {
-            if (items <= AmountInStock)
-            {
-                AmountInStock -= items;
-            }
-            else
-            {
-                AmountInStock = 0;
-            }
-
-            UpdateLowStock();
-
-            Log(reason);
-
-        }
-        private void UpdateLowStock()
-        {
-            if (AmountInStock <= 10)
-            {
-                IsBelowStockTreshold = true;
-            }
-        }
-
-        private string CreateSimpleProductRepresenttion()
-        {
-            return $"Product {Id} ({name})";
-        }
-        public string DisplayDetailsShort()
-        {
-            return $"{Id}. {name} \n{AmountInStock} items in stock";
-        }
-        public string DisplayDetailsFull()
-        {
-            ////StringBuilder sb = new StringBuilder();
-            ////sb.Append($"{Id}. {name} \n{description} \n{AmountInStock} item(s) in stock");
-
-            ////if (IsBelowStockTreshold)
-            ////{
-            ////    sb.Append("\n!!STOCK LOW!!");
-            ////}
-
-            //return sb.ToString(); 
-
-            return DisplayDetailsFull("");
-        }
-
-        public string DisplayDetailsFull(string extraDetails)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append($"{Id}. {name} \n{description} \n{AmountInStock} item(s) in stock");
-            sb.Append(extraDetails);
-
-            if (IsBelowStockTreshold)
-            {
-                sb.Append("\n!!STOCK LOW!!");
-            }
-
-            return sb.ToString();
-        }
-
-
-
 
     }
 }

@@ -1,0 +1,15 @@
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\bin\Debug\net6.0\Matey's Pie Shop.exe
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\bin\Debug\net6.0\Matey's Pie Shop.deps.json
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\bin\Debug\net6.0\Matey's Pie Shop.runtimeconfig.json
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\bin\Debug\net6.0\Matey's Pie Shop.dll
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\bin\Debug\net6.0\Matey's Pie Shop.pdb
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\Matey's Pie Shop.csproj.AssemblyReference.cache
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\Matey's Pie Shop.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\Matey's Pie Shop.AssemblyInfoInputs.cache
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\Matey's Pie Shop.AssemblyInfo.cs
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\Matey's Pie Shop.csproj.CoreCompileInputs.cache
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\Matey's Pie Shop.dll
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\refint\Matey's Pie Shop.dll
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\Matey's Pie Shop.pdb
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\Matey's Pie Shop.genruntimeconfig.cache
+C:\Users\Matey Tsilov\source\repos\Matey's Pie Shop\Matey's Pie Shop\obj\Debug\net6.0\ref\Matey's Pie Shop.dll

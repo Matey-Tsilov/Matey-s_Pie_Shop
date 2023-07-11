@@ -11,6 +11,11 @@ namespace Matey_s_Pie_Shop.Domain.General
 {
     public class Price
     {
+
+        public Price(double price, Currency cur) {
+            ItemPrice = price;
+            Currency = cur;
+        }
         public double ItemPrice { get; set; }
         public Currency Currency { get; set; }
 
