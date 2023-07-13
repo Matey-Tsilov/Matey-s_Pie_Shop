@@ -1,4 +1,5 @@
-﻿using Matey_s_Pie_Shop.Domain.General;
+﻿using Matey_s_Pie_Shop.Domain.Contracts;
+using Matey_s_Pie_Shop.Domain.General;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Matey_s_Pie_Shop.Domain.ProductManagement
 {
-    public class BoxedProduct : Product
+    public class BoxedProduct : Product, ISavable, ILoggable
     {
         private int amountPerBox;
         
@@ -86,5 +87,18 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
                 IsBelowStockTreshold = false;
             }
         }
+
+        public string ConvertToStringForSaving()
+        {
+            return $"{Id};{Name};{Description};{maxItemInStock};{Price.ItemPrice}" +
+                $";{(int)Price.Currency};{(int)UnitType};1;{AmountPerBox}";
+        }
+        public override object Clone()
+        {
+            return new BoxedProduct(0, this.Name, this.Description, 
+                new Price() { ItemPrice = this.Price.ItemPrice, 
+                    Currency = this.Price.Currency }, this.maxItemInStock, this.AmountPerBox);
+        }
+
     }
 }

@@ -27,10 +27,7 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
             Console.WriteLine(message);
         }
 
-        public virtual void IncreaseStock()
-        {
-            AmountInStock++;
-        }
+        public abstract void IncreaseStock();
         public virtual void IncreaseStock(int amount)
         {
             int newValue = AmountInStock + amount;
@@ -119,7 +116,8 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
             {
                 StockTreshold = newTreshold;
             }
-        } 
+        }
 
+        public abstract object Clone();
     }
 }
