@@ -8,7 +8,7 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
 {
     public partial class Product
     {
-        public void UseProduct(int items)
+        public virtual void UseProduct(int items)
         {
             if (items <= AmountInStock)
             {
@@ -22,16 +22,16 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
                 Log($"Not enough items on stock for {CreateSimpleProductRepresenttion()}. {AmountInStock} available but {items} requested!");
             }
         }
-        private void Log(string message)
+        protected void Log(string message)
         {
             Console.WriteLine(message);
         }
 
-        public void IncreaseStock()
+        public virtual void IncreaseStock()
         {
             AmountInStock++;
         }
-        public void IncreaseStock(int amount)
+        public virtual void IncreaseStock(int amount)
         {
             int newValue = AmountInStock + amount;
 
@@ -52,7 +52,7 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
                 IsBelowStockTreshold = false;
             }
         }
-        private void DecreaseStock(int items, string reason)
+        protected virtual void DecreaseStock(int items, string reason)
         {
             if (items <= AmountInStock)
             {
@@ -68,7 +68,7 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
             Log(reason);
 
         }
-        public void UpdateLowStock()
+        public virtual void UpdateLowStock()
         {
             if (AmountInStock <= StockTreshold)
             {
@@ -76,15 +76,15 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
             }
         }
 
-        private string CreateSimpleProductRepresenttion()
+        protected string CreateSimpleProductRepresenttion()
         {
             return $"Product {Id} ({name})";
         }
-        public string DisplayDetailsShort()
+        public virtual string DisplayDetailsShort()
         {
             return $"{Id}. {name} \n{AmountInStock} items in stock";
         }
-        public string DisplayDetailsFull()
+        public virtual string DisplayDetailsFull()
         {
             ////StringBuilder sb = new StringBuilder();
             ////sb.Append($"{Id}. {name} \n{description} \n{AmountInStock} item(s) in stock");
@@ -99,7 +99,7 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
             return DisplayDetailsFull("");
         }
 
-        public string DisplayDetailsFull(string extraDetails)
+        public virtual string DisplayDetailsFull(string extraDetails)
         {
             StringBuilder sb = new StringBuilder();
             sb.Append($"{Id}. {name} \n{description}\n{Price.ToString()}$\n{AmountInStock} item(s) in stock");

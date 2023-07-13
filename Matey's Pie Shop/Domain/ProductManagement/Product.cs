@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Matey_s_Pie_Shop.Domain.ProductManagement
 {
-    public partial class Product
+    public abstract partial class Product
     {
         private string name;
         private string? description;
-        private int maxItemInStock = 0;
+        protected int maxItemInStock = 0;
 
         public static int StockTreshold = 5;
 
@@ -54,8 +54,8 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
         public Price Price { get; set; }
         public int Id { get; set; }
         public UnitType UnitType { get; set; }
-        public int AmountInStock { get; private set; }
-        public bool IsBelowStockTreshold { get; private set; }
+        public int AmountInStock { get; protected set; }
+        public bool IsBelowStockTreshold { get; protected set; }
         /// <summary>
         /// Properties
         /// </summary>

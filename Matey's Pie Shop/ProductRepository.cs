@@ -71,12 +71,44 @@ namespace Matey_s_Pie_Shop
                     {
                         unitType = UnitType.PerItem;//default value
                     }
+                    string productType = productSplits[7];
 
-                    Product product = new Product(productId, name, description,
-                        new Price() { Currency = currency, ItemPrice = itemPrice},
-                        unitType, maxItemsInStock);
+                    Product product = null;
+
+                    switch (productType)
+                    {
+                        case "1":
+                            success = int.TryParse(productSplits[8], out int amountPerBox);
+                            if (!success)
+                            {
+                                amountPerBox = 1;//default value
+                            }
+
+                            product = new BoxedProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, maxItemsInStock, amountPerBox);
+                            break;
+
+                        case "2":
+                            product = new FreshProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
+                            break;
+                        case "3":
+                            product = new BulkProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, maxItemsInStock);
+                            break;
+                        case "4":
+                            product = new Product(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
+                            break;
+                    }
+
+                    //Product product = new Product(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
+
 
                     products.Add(product);
+
+
+                    //Product product = new Product(productId, name, description,
+                    //    new Price() { Currency = currency, ItemPrice = itemPrice},
+                    //    unitType, maxItemsInStock);
+
+                    //products.Add(product);
 
                 }
 

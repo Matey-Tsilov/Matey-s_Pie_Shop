@@ -9,7 +9,7 @@ namespace Matey_s_Pie_Shop.Tests
         public void UseProduct_Reduces_AmountInStock()
         {
             //Arrange
-            Product product = new Product(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
+            Product product = new RegularProduct(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
 
             product.IncreaseStock(100);
 
@@ -26,7 +26,7 @@ namespace Matey_s_Pie_Shop.Tests
         public void UseProduct_ItemsHigherThanStock_NoChangetoStock()
         {
             //Arrange
-            Product product = new Product(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
+            Product product = new RegularProduct(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
 
             product.IncreaseStock(10);
 
@@ -41,7 +41,7 @@ namespace Matey_s_Pie_Shop.Tests
         public void UseProduct_Reduces_AmountInStock_StockBelowThreshold()
         {
             //Arrange
-            Product product = new Product(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
+            Product product = new RegularProduct(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
 
             int increaseValue = 100;
             product.IncreaseStock(increaseValue);
@@ -57,7 +57,7 @@ namespace Matey_s_Pie_Shop.Tests
         public void IncreaseStock_AddsOne()
         {
             //Arrange
-            Product product = new Product(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
+            Product product = new RegularProduct(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
 
             //Act
             product.IncreaseStock();
@@ -70,7 +70,7 @@ namespace Matey_s_Pie_Shop.Tests
         public void IncreaseStock_AddsPassedInValue_BelowMaxAmount()
         {
             //Arrange   
-            Product product = new Product(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
+            Product product = new RegularProduct(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
 
             //Act
             product.IncreaseStock(20);
@@ -83,7 +83,7 @@ namespace Matey_s_Pie_Shop.Tests
         public void IncreaseStock_AddsPassedInValue_AboveMaxAmount()
         {
             //Arrange
-            Product product = new Product(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
+            Product product = new RegularProduct(1, "Sugar", "Lorem ipsum", new Price() { ItemPrice = 10, Currency = Currency.Euro }, UnitType.PerKilo, 100);
 
             //Act
             product.IncreaseStock(300);
