@@ -42,7 +42,7 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
             else
             {
                 //overstock isn't stored!
-                maxItemInStock = newValue;
+                AmountInStock = maxItemInStock;
                 Log($"{CreateSimpleProductRepresenttion()} stock overflow. " +
                     $"{newValue - AmountInStock} item(s) ordered that " +
                     $"couldn't be stored! ");

@@ -5,6 +5,8 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matey's Pie Shop", "Matey's Pie Shop\Matey's Pie Shop.csproj", "{06CED6BB-3D08-4D36-A02D-DCEFF47D6C37}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matey's Pie Shop.Tests", "Matey's Pie Shop.Tests\Matey's Pie Shop.Tests.csproj", "{07C0E4E3-24E3-4366-AA3A-7DF312D65CEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{06CED6BB-3D08-4D36-A02D-DCEFF47D6C37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06CED6BB-3D08-4D36-A02D-DCEFF47D6C37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06CED6BB-3D08-4D36-A02D-DCEFF47D6C37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07C0E4E3-24E3-4366-AA3A-7DF312D65CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07C0E4E3-24E3-4366-AA3A-7DF312D65CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07C0E4E3-24E3-4366-AA3A-7DF312D65CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07C0E4E3-24E3-4366-AA3A-7DF312D65CEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
