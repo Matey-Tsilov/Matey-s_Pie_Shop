@@ -100,5 +100,9 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
                     Currency = this.Price.Currency }, this.maxItemInStock, this.AmountPerBox);
         }
 
+        void ILoggable.Log(string message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

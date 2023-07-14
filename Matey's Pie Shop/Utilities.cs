@@ -119,7 +119,7 @@ namespace Matey_s_Pie_Shop
                         break;
 
                     case "3":
-                        //ShowCloneExistingProduct();
+                        ShowCloneExistingProduct();
                         break;
 
                     case "4":
@@ -181,7 +181,7 @@ namespace Matey_s_Pie_Shop
             switch (productType)
             {
                 case "1":
-                    newProduct = new Product(newId, name, description, new Price() { ItemPrice = price, Currency = currency }, unitType, maxInStock);
+                    newProduct = new RegularProduct(newId, name, description, new Price() { ItemPrice = price, Currency = currency }, unitType, maxInStock);
                     break;
 
                 case "2":
@@ -226,7 +226,6 @@ namespace Matey_s_Pie_Shop
             }
         }
 
-
         private static void ShowAllProductsOverview()
         {
             foreach (var product in inventory)
@@ -234,7 +233,7 @@ namespace Matey_s_Pie_Shop
                 Console.WriteLine(product.DisplayDetailsShort());
                 Console.WriteLine();
             }
-        }
+        }  
 
         private static void ShowDetailsAndUseProduct()
         {
@@ -486,6 +485,39 @@ namespace Matey_s_Pie_Shop
             }
 
             Console.ReadLine();
+        }
+
+        private static void ShowCloneExistingProduct()
+        {
+            string? userSelection = string.Empty;
+            string? newId = string.Empty;
+
+            Console.Write("Enter the ID of product to clone: ");
+            string? selectedProductId = Console.ReadLine();
+
+            if (selectedProductId != null)
+            {
+                Product? selectedProduct = inventory.Where(p => p.Id == int.Parse(selectedProductId)).FirstOrDefault();
+
+                if (selectedProduct != null)
+                {
+                    Console.Write("Enter the new ID of the cloned product: ");
+
+                    newId = Console.ReadLine();
+
+                    Product? p = selectedProduct.Clone() as Product;
+
+                    if (p != null)
+                    {
+                        p.Id = int.Parse(newId);
+                        inventory.Add(p);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Non-existing product selected. Please try again.");
+            }
         }
     }
 }

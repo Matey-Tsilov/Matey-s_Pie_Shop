@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Matey_s_Pie_Shop.Domain.Contracts
 {
-    public interface ISavable
+    public interface ISaveable
     {
         string ConvertToStringForSaving();
     }

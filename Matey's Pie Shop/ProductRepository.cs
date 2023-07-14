@@ -1,4 +1,5 @@
-﻿using Matey_s_Pie_Shop.Domain.General;
+﻿using Matey_s_Pie_Shop.Domain.Contracts;
+using Matey_s_Pie_Shop.Domain.General;
 using Matey_s_Pie_Shop.Domain.ProductManagement;
 using System;
 using System.Collections.Generic;
@@ -94,7 +95,7 @@ namespace Matey_s_Pie_Shop
                             product = new BulkProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, maxItemsInStock);
                             break;
                         case "4":
-                            product = new Product(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
+                            product = new RegularProduct(productId, name, description, new Price() { ItemPrice = itemPrice, Currency = currency }, unitType, maxItemsInStock);
                             break;
                     }
 
@@ -137,10 +138,25 @@ namespace Matey_s_Pie_Shop
             {
                 Console.ResetColor();
             }
-
-
             return products;
 
-        } 
+        }
+        public void SaveToFile(List<ISaveable> saveables)
+        {
+            StringBuilder sb = new StringBuilder();
+            string path = $"{directory}{productsFileName}";
+
+            foreach (var item in saveables)
+            {
+                sb.Append(item.ConvertToStringForSaving());
+                sb.Append(Environment.NewLine);
+            }
+
+            File.WriteAllText(path, sb.ToString());
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Saved items successfully");
+            Console.ResetColor();
+        }
     }
 }

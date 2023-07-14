@@ -43,7 +43,6 @@ namespace Matey_s_Pie_Shop.Domain.ProductManagement
             return $"{Id};{Name};{Description};{maxItemInStock};{Price.ItemPrice}" +
                 $";{(int)Price.Currency};{(int)UnitType};2";
         }
-        FreshProduct
 public override object Clone()
         {
             return new FreshProduct(0, this.Name, this.Description, new Price() { ItemPrice = this.Price.ItemPrice, Currency = this.Price.Currency }, this.UnitType, this.maxItemInStock);

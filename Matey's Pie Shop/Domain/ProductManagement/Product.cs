@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Matey_s_Pie_Shop.Domain.ProductManagement
 {
-    public abstract partial class Product
+    public abstract partial class Product : ICloneable
     {
         private string name;
         private string? description;
